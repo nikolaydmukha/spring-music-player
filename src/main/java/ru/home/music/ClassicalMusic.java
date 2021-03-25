@@ -12,6 +12,7 @@ public class ClassicalMusic implements Music {
 
     private List<Song> songs = new ArrayList<>();
 
+    @Override
     public List<Song> getSongs() {
         return songs;
     }

@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import ru.home.model.Genre;
 import ru.home.model.Song;
 import ru.home.music.ClassicalMusic;
+import ru.home.music.Music;
 import ru.home.music.PopMusic;
 import ru.home.music.RockMusic;
 import ru.home.musicPlayer.MusicPlayer;
@@ -16,9 +17,9 @@ public class App {
 
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("ru.home");
 
-        final PopMusic popMusic = context.getBean("popMusic", PopMusic.class);
-        final ClassicalMusic classicalMusic = context.getBean("classicalMusic", ClassicalMusic.class);
-        final RockMusic rockMusic = context.getBean("rockMusic", RockMusic.class);
+        final Music popMusic = context.getBean("popMusic", PopMusic.class);
+        final Music classicalMusic = context.getBean("classicalMusic", ClassicalMusic.class);
+        final Music rockMusic = context.getBean("rockMusic", RockMusic.class);
 
         addPopSong(popMusic);
         addClassicalSong(classicalMusic);
@@ -32,17 +33,17 @@ public class App {
 
     }
 
-    private static void addPopSong(PopMusic popMusic) {
+    private static void addPopSong(Music popMusic) {
         popMusic.addSong(Genre.POP_MUSIC, "The business");
         popMusic.addSong(Genre.POP_MUSIC, "Let`s go");
     }
 
-    private static void addRockSong(RockMusic rockMusic) {
+    private static void addRockSong(Music rockMusic) {
         rockMusic.addSong(Genre.ROCK_MUSIC, "Californication");
         rockMusic.addSong(Genre.ROCK_MUSIC, "Scar tissue");
     }
 
-    private static void addClassicalSong(ClassicalMusic classicalMusic) {
+    private static void addClassicalSong(Music classicalMusic) {
         classicalMusic.addSong(Genre.CLASSICAL_MUSIC, "Moon sonata");
         classicalMusic.addSong(Genre.CLASSICAL_MUSIC, "Bee");
     }
