@@ -4,6 +4,6 @@ import ru.home.model.Genre;
 
 public interface Music {
 
-    public void addSong(Genre genre, String name);
+    void addSong(Genre genre, String name);
 
 }

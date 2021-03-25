@@ -1,12 +1,12 @@
 package ru.home.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.*;
 import ru.home.music.ClassicalMusic;
 import ru.home.music.PopMusic;
 import ru.home.music.RockMusic;
 
-@org.springframework.context.annotation.Configuration
-public class Configuration {
+@Configuration
+public class AppConfig {
 
     @Bean
     public PopMusic popMusic() {

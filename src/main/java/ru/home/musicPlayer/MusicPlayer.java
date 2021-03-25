@@ -35,7 +35,6 @@ public class MusicPlayer {
                 } catch (InterruptedException ex) {
                     System.out.println(ex.getMessage());
                 }
-
             }
         }
     }
