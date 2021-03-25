@@ -15,11 +15,6 @@ public class ClassicalMusic implements Music {
     }
 
     @Override
-    public void playSong() {
-        System.out.println("Playing classical song: Moon sonate");
-    }
-
-    @Override
     public void addSong(Genre genre, String name) {
         this.songs.add(new Song(genre, name));
     }

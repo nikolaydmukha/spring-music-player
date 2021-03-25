@@ -15,11 +15,6 @@ public class RockMusic implements Music {
     }
 
     @Override
-    public void playSong() {
-        System.out.println("Playing rock song: Show must go on");
-    }
-
-    @Override
     public void addSong(Genre genre, String name) {
         this.songs.add(new Song(genre, name));
     }

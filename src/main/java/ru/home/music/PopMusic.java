@@ -19,8 +19,4 @@ public class PopMusic implements Music {
         this.songs.add(new Song(genre, name));
     }
 
-    @Override
-    public void playSong() {
-        System.out.println("Playing pop song: The business");
-    }
 }
