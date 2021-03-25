@@ -7,9 +7,11 @@ import java.util.List;
 public class MusicPlayer {
 
     private List<List<Song>> musicList;
+    private int volume;
 
     public MusicPlayer(List<List<Song>> musicList) {
         this.musicList = musicList;
+        volume = 30;
     }
 
     public List<List<Song>> getMusicList() {
@@ -18,6 +20,10 @@ public class MusicPlayer {
 
     public void setMusicList(List<List<Song>> musicList) {
         this.musicList = musicList;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 
     public void play() {
