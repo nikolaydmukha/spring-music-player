@@ -2,7 +2,9 @@ package ru.home.musicPlayer;
 
 import ru.home.model.Song;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MusicPlayer {
 
@@ -29,17 +31,33 @@ public class MusicPlayer {
     public void play() {
         for (List<Song> genres : musicList) {
             for (Song song : genres) {
-                try {
-                    Thread.sleep(3000);
-                    playSong(song);
-                } catch (InterruptedException ex) {
-                    System.out.println(ex.getMessage());
-                }
+                playSong(song);
             }
         }
     }
 
-    private void playSong(Song song) {
-        System.out.println("Playing song: genre " + song.getGenre() + " name " + song.getName());
+    public void playShuffle() {
+        List<Song> allSongs = new ArrayList<>();
+        for (List<Song> genres : musicList) {
+            for (Song song : genres) {
+                allSongs.add(song);
+            }
+        }
+        Random random = new Random();
+        for (int i = 0; i < allSongs.size(); i++) {
+            int randomNum = random.nextInt((allSongs.size() - 0) + 0);
+            playSong(allSongs.get(randomNum));
+        }
+
     }
+
+    private void playSong(Song song) {
+        try {
+            Thread.sleep(1000);
+            System.out.println("Playing song: genre " + song.getGenre() + " name " + song.getName());
+        } catch (InterruptedException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }

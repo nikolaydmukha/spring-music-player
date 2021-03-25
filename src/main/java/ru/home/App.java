@@ -30,6 +30,7 @@ public class App {
 
         MusicPlayer musicPlayer = new MusicPlayer(playList);
         musicPlayer.play();
+        musicPlayer.playShuffle();
 
     }
 
