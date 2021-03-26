@@ -48,7 +48,6 @@ public class MusicPlayer {
             int randomNum = random.nextInt((allSongs.size() - 0) + 0);
             playSong(allSongs.get(randomNum));
         }
-
     }
 
     private void playSong(Song song) {

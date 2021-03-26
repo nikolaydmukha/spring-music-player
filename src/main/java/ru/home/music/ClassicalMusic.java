@@ -21,4 +21,5 @@ public class ClassicalMusic implements Music {
     public void addSong(Genre genre, String name) {
         this.songs.add(new Song(genre, name));
     }
+
 }
