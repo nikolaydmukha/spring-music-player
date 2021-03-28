@@ -2,15 +2,11 @@ package ru.home;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.home.model.Genre;
-import ru.home.model.Song;
 import ru.home.music.ClassicalMusic;
 import ru.home.music.Music;
 import ru.home.music.PopMusic;
 import ru.home.music.RockMusic;
 import ru.home.musicPlayer.MusicPlayer;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -25,13 +21,8 @@ public class App {
         addClassicalSong(classicalMusic);
         addRockSong(rockMusic);
 
-
-        List<List<Song>> playList = Arrays.asList(popMusic.getSongs(), classicalMusic.getSongs(), rockMusic.getSongs());
-
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        musicPlayer.setPlayList(playList);
-        musicPlayer.play();
-        musicPlayer.playShuffle();
+        musicPlayer.play(Genre.ROCK_MUSIC);
 
     }
 

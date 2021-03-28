@@ -1,7 +1,10 @@
 package ru.home.musicPlayer;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import ru.home.model.Genre;
 import ru.home.model.Song;
+import ru.home.music.Music;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,45 +13,34 @@ import java.util.Random;
 @Component
 public class MusicPlayer {
 
-    private List<List<Song>> playList;
+    private Music music1;
+    private Music music2;
+    private Music music3;
     private int volume;
 
-//    public MusicPlayer(List<List<Song>> musicList) {
-//        this.musicList = musicList;
-//        volume = 30;
-//    }
-
-    public List<List<Song>> getPlayList() {
-        return playList;
-    }
-
-    public void setPlayList(List<List<Song>> playList) {
-        this.playList = playList;
+    public MusicPlayer(@Qualifier("classicalMusic") Music music1, @Qualifier("popMusic") Music music2, @Qualifier("rockMusic") Music music3) {
+        this.music1 = music1;
+        this.music2 = music2;
+        this.music3 = music3;
+        this.volume = 30;
     }
 
     public void setVolume(int volume) {
         this.volume = volume;
     }
 
-    public void play() {
-        for (List<Song> genres : playList) {
-            for (Song song : genres) {
-                playSong(song);
-            }
-        }
-    }
-
-    public void playShuffle() {
-        List<Song> allSongs = new ArrayList<>();
-        for (List<Song> genres : playList) {
-            for (Song song : genres) {
-                allSongs.add(song);
-            }
-        }
+    public void play(Genre genre) {
         Random random = new Random();
-        for (int i = 0; i < allSongs.size(); i++) {
-            int randomNum = random.nextInt((allSongs.size() - 0) + 0);
-            playSong(allSongs.get(randomNum));
+        switch (genre) {
+            case CLASSICAL_MUSIC:
+                playSong(music1.getSongs().get(random.nextInt((music1.getSongs().size() - 0) + 0)));
+                break;
+            case POP_MUSIC:
+                playSong(music2.getSongs().get(random.nextInt((music2.getSongs().size() - 0) + 0)));
+                break;
+            case ROCK_MUSIC:
+                playSong(music3.getSongs().get(random.nextInt((music3.getSongs().size() - 0) + 0)));
+                break;
         }
     }
 
