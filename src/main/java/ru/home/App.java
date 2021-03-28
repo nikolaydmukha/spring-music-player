@@ -28,7 +28,8 @@ public class App {
 
         List<List<Song>> playList = Arrays.asList(popMusic.getSongs(), classicalMusic.getSongs(), rockMusic.getSongs());
 
-        MusicPlayer musicPlayer = new MusicPlayer(playList);
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        musicPlayer.setPlayList(playList);
         musicPlayer.play();
         musicPlayer.playShuffle();
 

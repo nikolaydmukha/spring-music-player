@@ -1,27 +1,29 @@
 package ru.home.musicPlayer;
 
+import org.springframework.stereotype.Component;
 import ru.home.model.Song;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Component
 public class MusicPlayer {
 
-    private List<List<Song>> musicList;
+    private List<List<Song>> playList;
     private int volume;
 
-    public MusicPlayer(List<List<Song>> musicList) {
-        this.musicList = musicList;
-        volume = 30;
+//    public MusicPlayer(List<List<Song>> musicList) {
+//        this.musicList = musicList;
+//        volume = 30;
+//    }
+
+    public List<List<Song>> getPlayList() {
+        return playList;
     }
 
-    public List<List<Song>> getMusicList() {
-        return musicList;
-    }
-
-    public void setMusicList(List<List<Song>> musicList) {
-        this.musicList = musicList;
+    public void setPlayList(List<List<Song>> playList) {
+        this.playList = playList;
     }
 
     public void setVolume(int volume) {
@@ -29,7 +31,7 @@ public class MusicPlayer {
     }
 
     public void play() {
-        for (List<Song> genres : musicList) {
+        for (List<Song> genres : playList) {
             for (Song song : genres) {
                 playSong(song);
             }
@@ -38,7 +40,7 @@ public class MusicPlayer {
 
     public void playShuffle() {
         List<Song> allSongs = new ArrayList<>();
-        for (List<Song> genres : musicList) {
+        for (List<Song> genres : playList) {
             for (Song song : genres) {
                 allSongs.add(song);
             }
